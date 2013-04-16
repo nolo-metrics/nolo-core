@@ -3,9 +3,9 @@
 PATH="test/fake/bin:$PATH"
 command='plugins/load'
 expected=$(cat <<EOF
-load_one 0.99
-load_five 0.99
-load_fifteen 0.94
+one 0.99
+five 0.99
+fifteen 0.94
 EOF)
 actual=`$command`
 
