@@ -47,14 +47,26 @@ You can run this plugin regularly by entering adding it to your crontab:
 Please note: the ganglia adapter does not yet support any metadata
 flags, so it will only pass along the identifier and value.
 
+Graphite
+--------
+
+[nolo-graphite](https://github.com/nolo-metrics/nolo-graphite) is a
+collector adapter to ship metrics to your graphite server. It's the
+easiest way to collect nolo metrics today.
+
+
 Wanted Adapters
 ---------------
 
+- ganglia
+- server density
 - cacti
 - munin
 - collectd
 - scout
-- server density
+- statsd
+- reimann
+- librato
 
 About the name
 --------------
