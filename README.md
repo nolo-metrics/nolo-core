@@ -54,7 +54,6 @@ Graphite
 collector adapter to ship metrics to your graphite server. It's the
 easiest way to collect nolo metrics today.
 
-
 Wanted Adapters
 ---------------
 
