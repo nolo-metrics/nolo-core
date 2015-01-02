@@ -1,0 +1,38 @@
+#!/bin/sh
+# redis - print redis stats in nolo format
+# key-values documented in http://redis.io/commands/info
+
+# request stats
+redis-cli info all |
+# Format
+sed 's/:/ /g' |
+sed 's/\r//g' |
+# Blacklist non-metric records
+grep -v "^#" |
+grep -v "^$" |
+grep -v aof_last_bgrewrite_status |
+grep -v aof_last_write_status |
+grep -v cmdstat_info |
+grep -v config_file |
+grep -v gcc_version |
+grep -v mem_allocator |
+grep -v multiplexing_api |
+grep -v os |
+grep -v rdb_last_bgsave_status |
+grep -v redis_build_id |
+grep -v redis_git_sha1 |
+grep -v redis_mode |
+grep -v redis_version |
+grep -v role |
+grep -v run_id |
+grep -v used_memory_human |
+grep -v used_memory_peak_human |
+grep -v used_memory_rss_human |
+# whitelist lines which look like metrics
+# pcre: /^[\w_]+\s+\d+(\.\d+)?\s*$/
+# prevents:
+# - some_key alpha_in_value
+# - some_key 1.2.3
+grep -E "^[[:alnum:]_]+[[:space:]]+(-)?[[:digit:]]+(\.[[:digit:]]+)?[[:space:]]*$" |
+# Print
+cat
