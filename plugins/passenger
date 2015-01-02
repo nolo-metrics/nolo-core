@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# passenger - print passenger stats in nolo format
 
 `passenger-status`.each_line do |line|
   case line
