@@ -1,0 +1,28 @@
+#!/bin/sh
+# nginx - parse nginx stub_status into nolo format
+# for more info see http://wiki.nginx.org/HttpStubStatusModule
+
+# Set the status url in $NGINX_STATUS_URL
+NGINX_STATUS_URL=${NGINX_STATUS_URL:-localhost/nginx_status}
+
+curl "$NGINX_STATUS_URL" |
+awk '
+# Active connections: 43 
+/Active connections: / {
+  print "active_connections " $3;
+}
+# server accepts handled requests
+#  7368 7368 10993 
+/server accepts handled requests/ {
+  getline $0; # read next line
+  print "accepted_requests " $1;
+  print "handled_connections " $2;
+  print "handled_requests " $3;
+}
+# Reading: 0 Writing: 5 Waiting: 38
+/Reading: .* Writing: .* Waiting: .*/ {
+  print "reading " $2;
+  print "writing " $4;
+  print "waiting " $6;
+}
+'
