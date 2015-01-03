@@ -1,0 +1,20 @@
+#!/bin/sh
+# cpu - cpu stats
+# for details see: https://www.kernel.org/doc/Documentation/filesystems/proc.txt
+
+cat /proc/stat |
+awk '
+/cpu / {
+  print "user "    $2
+  print "nice "    $3
+  print "sys "     $4
+  print "idle "    $5
+  print "wait "    $6
+  print "irq "     $7
+  print "softirq " $8
+  print "steal "   $9
+}
+/btime/ {
+  print "boottime " $2
+}
+'

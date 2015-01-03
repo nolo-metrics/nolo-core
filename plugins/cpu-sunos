@@ -1,0 +1,22 @@
+#!/bin/sh
+# cpu-sunos
+
+# kstat data for cpu:
+#   cpu:0:sys:cpu_ticks_idle        711885
+#   cpu:0:sys:cpu_ticks_kernel      13225
+#   cpu:0:sys:cpu_ticks_user        1056
+#   cpu:0:sys:cpu_ticks_wait        0
+kstat -p -m cpu -s /cpu_ticks/ |
+# trim down to meaningful key
+sed 's/.*:cpu_ticks_//' |
+awk '
+# sum across cpus
+{ map[$1] += $2 }
+END {
+  print "user " map["user"]
+  print "sys "  map["kernel"]
+  print "idle " map["idle"]
+  print "wait " map["wait"]
+}
+'
+

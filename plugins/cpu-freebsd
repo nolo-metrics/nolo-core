@@ -1,0 +1,13 @@
+#!/bin/sh
+# cpu-freebsd - cpu usage
+
+sysctl -n kern.cp_time |
+awk '
+{
+  print "user " $1
+  print "nice " $2
+  print "sys "  $3
+  print "irq "  $4
+  print "idle " $5
+}
+'
