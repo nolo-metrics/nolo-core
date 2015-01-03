@@ -1,6 +1,8 @@
 #!/bin/sh
-# nginx - parse nginx stub_status into nolo format
-# for more info see http://wiki.nginx.org/HttpStubStatusModule
+# nginx - collect nginx connection & memory metrics into nolo format
+
+## Connections & Requests ##
+# depends on stub_status, for more info see http://wiki.nginx.org/HttpStubStatusModule
 
 # Set the status url in $NGINX_STATUS_URL
 NGINX_STATUS_URL=${NGINX_STATUS_URL:-localhost/nginx_status}
@@ -24,5 +26,20 @@ awk '
   print "reading " $2;
   print "writing " $4;
   print "waiting " $6;
+}
+'
+
+## Memory ##
+# Virtual memory and resident set are printed in bytes
+
+ps -o vsz,rss,sz -p $(pgrep -d ' ' nginx) |
+awk '
+NR > 1 {
+  virtual_memory_size += $1 # aka vsz
+  resident_set_size += $2 # aka rss
+}
+END {
+  print "virtual_memory_size " virtual_memory_size*1024;
+  print "resident_set_size " resident_set_size*1024;
 }
 '
