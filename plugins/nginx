@@ -1,6 +1,9 @@
 #!/bin/sh
 # nginx - collect nginx connection & memory metrics into nolo format
 
+# For more ideas, see:
+# - https://github.com/munin-monitoring/contrib/tree/master/plugins/nginx
+
 ## Connections & Requests ##
 # depends on stub_status, for more info see http://wiki.nginx.org/HttpStubStatusModule
 
