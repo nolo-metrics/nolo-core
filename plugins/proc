@@ -1,5 +1,5 @@
 #!/bin/sh
-# proc - prod monitoring
+# proc - process monitoring in nolo format
 
 # deeply inspired by https://github.com/munin-monitoring/munin/blob/master/plugins/node.d/processes.in
 #
