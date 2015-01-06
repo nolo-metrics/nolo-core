@@ -1,0 +1,24 @@
+#!/bin/sh
+
+PATH="test/fake/sunos-bin:$PATH"
+command='plugins/proc'
+expected=$(cat <<EOF
+load 1.23
+total 6
+dead 0
+idle 0
+lock 0
+runnable 1
+running 1
+sleeping 1
+stopped 1
+uninterruptible 0
+waiting 1
+zombie 1
+EOF)
+actual=`$command`
+
+if ! [ "${actual}" = "${expected}" ]; then
+  echo "${command} failed! Got \"${actual}\", but expected \"${expected}\""
+  exit -1
+fi

@@ -1,0 +1,4 @@
+#!/bin/sh
+# uptime - stub `uptime` output from sunos
+
+echo "19:04:58    up 3 day(s),  9:12,  1 user,  load average: 1.23, 0.00, 0.00"

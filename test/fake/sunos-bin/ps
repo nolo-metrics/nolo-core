@@ -1,0 +1,10 @@
+#!/bin/sh
+# ps - fake output of `ps -Ao state=`
+
+echo O # Process is running on a processor.
+echo R # Runnable: process is on run queue.
+echo S # Sleeping: process is waiting for an event to complete.
+echo T # Process is stopped, either by a job control signal or because it is being traced.
+echo W # Waiting: process is waiting for CPU usage to drop to the CPU-caps enforced limits.
+echo Z # Zombie state: process terminated and parent not waiting.
+

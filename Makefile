@@ -20,6 +20,7 @@ TESTS=\
   test/plugins/proc \
   test/plugins/proc-darwin \
   test/plugins/proc-linux \
+  test/plugins/proc-sunos \
 
 FAKE_PLUGINS=\
   test/fake/plugins/failing-return \
@@ -34,6 +35,12 @@ FAKE_BINS=\
   test/fake/bin/passenger-status \
   test/fake/bin/ps \
   test/fake/bin/uptime \
+  test/fake/darwin-bin/ps \
+  test/fake/darwin-bin/uptime \
+  test/fake/linux-bin/ps \
+  test/fake/linux-bin/uptime \
+  test/fake/sunos-bin/ps \
+  test/fake/sunos-bin/uptime \
 
 ALL=$(BINS) $(TESTS) $(PLUGINS) $(FAKE_PLUGINS) $(FAKE_BINS)
 
@@ -46,6 +53,7 @@ test: $(ALL)
 	test/plugins/proc
 	test/plugins/proc-darwin
 	test/plugins/proc-linux
+	test/plugins/proc-sunos
 
 tags: $(ALL)
 	ctags -R .
