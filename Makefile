@@ -42,9 +42,9 @@ FAKE_BINS=\
   test/fake/sunos-bin/ps \
   test/fake/sunos-bin/uptime \
 
-ALL=$(BINS) $(TESTS) $(PLUGINS) $(FAKE_PLUGINS) $(FAKE_BINS)
+ALL=${BINS} ${TESTS} ${PLUGINS} ${FAKE_PLUGINS} ${FAKE_BINS}
 
-test: $(ALL)
+test: ${ALL}
 	test/gmetric/check-exec
 	test/gmetric/empty-params
 	test/gmetric/multiple
@@ -55,7 +55,7 @@ test: $(ALL)
 	test/plugins/proc-linux
 	test/plugins/proc-sunos
 
-tags: $(ALL)
+tags: ${ALL}
 	ctags -R .
 
 clean:
