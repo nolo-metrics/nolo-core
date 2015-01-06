@@ -18,6 +18,7 @@ TESTS=\
   test/gmetric/single \
   test/plugins/passenger \
   test/plugins/proc \
+  test/plugins/proc-darwin \
 
 FAKE_PLUGINS=\
   test/fake/plugins/failing-return \
@@ -40,8 +41,9 @@ test: $(ALL)
 	test/gmetric/empty-params
 	test/gmetric/multiple
 	test/gmetric/single
-	test/plugins/proc
 	test/plugins/passenger
+	test/plugins/proc
+	test/plugins/proc-darwin
 
 tags: $(ALL)
 	ctags -R .

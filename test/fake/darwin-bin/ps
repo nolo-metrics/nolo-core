@@ -1,0 +1,9 @@
+#!/bin/sh
+# ps - fake output of `ps -Ao state=` on darwin
+
+echo I # Marks a process that is idle (sleeping for longer than about 20 seconds).
+echo R # Marks a runnable process.
+echo S # Marks a process that is sleeping for less than about 20 seconds.
+echo T # Marks a stopped process.
+echo U # Marks a process in uninterruptible wait.
+echo Z # Marks a dead process (a ``zombie'').
