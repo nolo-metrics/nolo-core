@@ -19,6 +19,7 @@ TESTS=\
   test/plugins/passenger \
   test/plugins/proc \
   test/plugins/proc-darwin \
+  test/plugins/proc-freebsd \
   test/plugins/proc-linux \
   test/plugins/proc-sunos \
 
@@ -37,6 +38,8 @@ FAKE_BINS=\
   test/fake/bin/uptime \
   test/fake/darwin-bin/ps \
   test/fake/darwin-bin/uptime \
+  test/fake/freebsd-bin/ps \
+  test/fake/freebsd-bin/uptime \
   test/fake/linux-bin/ps \
   test/fake/linux-bin/uptime \
   test/fake/sunos-bin/ps \
@@ -52,6 +55,7 @@ test: $(ALL)
 	test/plugins/passenger
 	test/plugins/proc
 	test/plugins/proc-darwin
+	test/plugins/proc-freebsd
 	test/plugins/proc-linux
 	test/plugins/proc-sunos
 

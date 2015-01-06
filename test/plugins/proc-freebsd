@@ -1,0 +1,25 @@
+#!/bin/sh
+
+PATH="test/fake/freebsd-bin:$PATH"
+command='plugins/proc'
+expected=$(cat <<EOF
+load 0.01
+total 8
+dead 0
+idle 1
+lock 1
+runnable 1
+running 0
+sleeping 1
+stopped 1
+uninterruptible 1
+waiting 1
+zombie 1
+EOF)
+actual=`$command`
+
+if ! [ "${actual}" = "${expected}" ]; then
+  echo "${command} failed! Got \"${actual}\", but expected \"${expected}\""
+  exit -1
+fi
+

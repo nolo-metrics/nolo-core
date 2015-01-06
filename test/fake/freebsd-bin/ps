@@ -1,0 +1,11 @@
+#!/bin/sh
+# ps - stub `ps -Ao state=` output from freebsd
+
+echo D # disk wait
+echo I # idle
+echo L # waiting to acquire a lock
+echo R # runnable
+echo S # sleeping for less than about 20 sec
+echo T # stopped
+echo W # idle interrupt thread
+echo Z # dead process ``zombie''
