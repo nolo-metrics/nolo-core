@@ -17,7 +17,6 @@ TESTS=\
   test/gmetric/multiple \
   test/gmetric/single \
   test/plugins/passenger \
-  test/plugins/proc \
   test/plugins/proc-darwin \
   test/plugins/proc-freebsd \
   test/plugins/proc-linux \
@@ -34,8 +33,6 @@ FAKE_PLUGINS=\
 FAKE_BINS=\
   test/fake/bin/passenger-memory-stats \
   test/fake/bin/passenger-status \
-  test/fake/bin/ps \
-  test/fake/bin/uptime \
   test/fake/darwin-bin/ps \
   test/fake/darwin-bin/uptime \
   test/fake/freebsd-bin/ps \
@@ -53,7 +50,6 @@ test: $(ALL)
 	test/gmetric/multiple
 	test/gmetric/single
 	test/plugins/passenger
-	test/plugins/proc
 	test/plugins/proc-darwin
 	test/plugins/proc-freebsd
 	test/plugins/proc-linux
