@@ -1,11 +1,20 @@
 #!/bin/sh
 
 PATH="test/fake/bin:$PATH"
-command='plugins/load'
+command='plugins/proc'
 expected=$(cat <<EOF
-one 0.99
-five 0.99
-fifteen 0.94
+load 0.99
+total 27
+dead 1
+idle 2
+lock 1
+runnable 4
+running 1
+sleeping 4
+stopped 4
+uninterruptible 3
+waiting 3
+zombie 4
 EOF)
 actual=`$command`
 
