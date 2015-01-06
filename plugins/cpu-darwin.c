@@ -1,3 +1,8 @@
+/* cpu-darwin.c - collect cpu stats for each user, idle, sys, nice and
+ * report in nolo format. For more details, see:
+ * https://www.opensource.apple.com/source/xnu/xnu-2782.1.97/osfmk/man/host_statistics.html
+ */
+
 #include <mach/mach_host.h>
 #include <stdio.h>
 #include <err.h>
