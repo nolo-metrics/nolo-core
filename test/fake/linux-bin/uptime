@@ -1,0 +1,4 @@
+#!/bin/sh
+# uptime - stub `uptime` output from linux
+
+echo "18:59:49 up 1 day,  7:00,  1 user,  load average: 3.21, 0.01, 0.05"

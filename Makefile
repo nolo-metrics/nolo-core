@@ -19,6 +19,7 @@ TESTS=\
   test/plugins/passenger \
   test/plugins/proc \
   test/plugins/proc-darwin \
+  test/plugins/proc-linux \
 
 FAKE_PLUGINS=\
   test/fake/plugins/failing-return \
@@ -44,6 +45,7 @@ test: $(ALL)
 	test/plugins/passenger
 	test/plugins/proc
 	test/plugins/proc-darwin
+	test/plugins/proc-linux
 
 tags: $(ALL)
 	ctags -R .
