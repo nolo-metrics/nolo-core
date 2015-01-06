@@ -1,5 +1,5 @@
 #!/bin/sh
-# ps - fake output of `ps -Ao state=` on darwin
+# ps - stub `ps -Ao state=` output from darwin
 
 echo I # Marks a process that is idle (sleeping for longer than about 20 seconds).
 echo R # Marks a runnable process.
