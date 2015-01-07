@@ -1,8 +1,10 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-PATH="test/fake/freebsd-bin:$PATH"
+source_stubs "freebsd"
+
 command='plugins/cpu-freebsd'
+
 expected=$(cat <<EOF
 user 737
 nice 0

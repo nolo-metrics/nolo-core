@@ -1,7 +1,10 @@
 #!/bin/sh
+. `dirname $0`/helper.sh
 
-PATH="test/fake/sunos-bin:$PATH"
+source_stubs "sunos"
+
 command='plugins/proc'
+
 expected=$(cat <<EOF
 load 1.23
 total 6
@@ -16,9 +19,5 @@ uninterruptible 0
 waiting 1
 zombie 1
 EOF)
-actual=`$command`
 
-if ! [ "${actual}" = "${expected}" ]; then
-  echo "${command} failed! Got \"${actual}\", but expected \"${expected}\""
-  exit -1
-fi
+assert_eq "`$command`" "$expected"

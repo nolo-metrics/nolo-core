@@ -1,8 +1,10 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-PATH="test/fake/linux-bin:$PATH"
+source_stubs "linux"
+
 command='plugins/proc'
+
 expected=$(cat <<EOF
 load 3.21
 total 7

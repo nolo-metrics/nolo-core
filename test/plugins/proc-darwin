@@ -1,8 +1,10 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-PATH="test/fake/darwin-bin:$PATH"
+source_stubs "darwin"
+
 command='plugins/proc'
+
 expected=$(cat <<EOF
 load 0.99
 total 6

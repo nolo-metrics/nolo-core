@@ -1,8 +1,10 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-PATH="test/fake/bin:$PATH"
+source_stubs
+
 command='plugins/passenger'
+
 expected=$(cat <<EOF
 max_pool_size 7 units=processes slope=both description="Max processes in Passenger pool"
 open_processes 3 units=processes slope=both description="Number of currently open passenger processes"

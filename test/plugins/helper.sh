@@ -9,6 +9,16 @@ mktmp() {
 	mktemp ${TMPDIR}/${PREFIX}.XXXXXXXXXX || exit 1
 }
 
+source_stubs() {
+  kind=$1
+  if [ -z $kind ]
+  then
+    PATH="test/fake/bin:$PATH"
+  else
+    PATH="test/fake/${kind}-bin:$PATH"
+  fi
+}
+
 assert_eq() {
 	actual=$1
 	expected=$2

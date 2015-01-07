@@ -1,8 +1,10 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-PATH="test/fake/freebsd-bin:$PATH"
+source_stubs "freebsd"
+
 command='plugins/proc'
+
 expected=$(cat <<EOF
 load 0.01
 total 8
