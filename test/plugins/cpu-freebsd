@@ -1,0 +1,14 @@
+#!/bin/sh
+. `dirname $0`/helper.sh
+
+PATH="test/fake/freebsd-bin:$PATH"
+command='plugins/cpu-freebsd'
+expected=$(cat <<EOF
+user 737
+nice 0
+sys 4341
+irq 5990
+idle 12275482
+EOF)
+
+assert_eq "`$command`" "$expected"

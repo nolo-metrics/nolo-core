@@ -1,0 +1,3 @@
+#!/bin/sh
+# sysctl - stub `sysctl -n kern.cp_time` output from freebsd
+echo 737 0 4341 5990 12275482

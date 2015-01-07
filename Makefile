@@ -22,6 +22,7 @@ TESTS=\
   test/plugins/proc-linux \
   test/plugins/proc-sunos \
   test/plugins/redis \
+  test/plugins/cpu-freebsd \
 
 FAKE_PLUGINS=\
   test/fake/plugins/failing-return \
@@ -57,6 +58,7 @@ test: ${ALL}
 	test/plugins/proc-linux
 	test/plugins/proc-sunos
 	test/plugins/redis
+	test/plugins/cpu-freebsd
 .PHONY: test
 
 tags: ${ALL}
