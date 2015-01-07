@@ -1,4 +1,5 @@
 #!/bin/sh
+. `dirname $0`/helper.sh
 
 PATH="test/fake/freebsd-bin:$PATH"
 command='plugins/proc'
@@ -16,10 +17,5 @@ uninterruptible 1
 waiting 1
 zombie 1
 EOF)
-actual=`$command`
 
-if ! [ "${actual}" = "${expected}" ]; then
-  echo "${command} failed! Got \"${actual}\", but expected \"${expected}\""
-  exit -1
-fi
-
+assert_eq "`$command`" "$expected"

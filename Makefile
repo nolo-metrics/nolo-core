@@ -54,6 +54,7 @@ test: ${ALL}
 	test/plugins/proc-freebsd
 	test/plugins/proc-linux
 	test/plugins/proc-sunos
+.PHONY: test
 
 tags: ${ALL}
 	ctags -R .
