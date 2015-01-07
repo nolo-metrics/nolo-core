@@ -2,7 +2,8 @@
 # cpu - cpu stats
 # for details see: https://www.kernel.org/doc/Documentation/filesystems/proc.txt
 
-cat /proc/stat |
+PROC_STAT=${PROC_STAT:-/proc/stat}
+cat ${PROC_STAT} |
 awk '
 /cpu / {
   print "user "    $2
