@@ -10,39 +10,46 @@
 # Set the status url in $NGINX_STATUS_URL
 NGINX_STATUS_URL=${NGINX_STATUS_URL:-localhost/nginx_status}
 
-curl "$NGINX_STATUS_URL" |
+curl -s "$NGINX_STATUS_URL" |
 awk '
 # Active connections: 43 
 /Active connections: / {
-  print "active_connections " $3;
+	print "active_connections " $3;
 }
 # server accepts handled requests
 #  7368 7368 10993 
 /server accepts handled requests/ {
-  getline $0; # read next line
-  print "accepted_requests " $1;
-  print "handled_connections " $2;
-  print "handled_requests " $3;
+	getline $0; # read next line
+	print "accepted_requests " $1;
+	print "handled_connections " $2;
+	print "handled_requests " $3;
 }
 # Reading: 0 Writing: 5 Waiting: 38
 /Reading: .* Writing: .* Waiting: .*/ {
-  print "reading " $2;
-  print "writing " $4;
-  print "waiting " $6;
+	print "reading " $2;
+	print "writing " $4;
+	print "waiting " $6;
 }
 '
 
 ## Memory ##
 # Virtual memory and resident set are printed in bytes
 
-ps -o vsz,rss,sz -p $(pgrep -d ' ' nginx) |
-awk '
-NR > 1 {
-  virtual_memory_size += $1 # aka vsz
-  resident_set_size += $2 # aka rss
-}
-END {
-  print "virtual_memory_size " virtual_memory_size*1024;
-  print "resident_set_size " resident_set_size*1024;
-}
-'
+nginx_pid=$(pgrep -d ' ' nginx)
+if [ -n "$nginx_pid" ]; then
+	ps -o vsz,rss -p $nginx_pid |
+	awk '
+	NR > 1 {
+		virtual_memory_size += $1 # aka vsz
+		resident_set_size += $2 # aka rss
+	}
+	END {
+		print "virtual_memory_size " virtual_memory_size*1024;
+		print "resident_set_size " resident_set_size*1024;
+	}
+	'
+else
+	echo "No nginx processes found" >&2
+	echo "virtual_memory_size 0"
+	echo "resident_set_size 0"
+fi

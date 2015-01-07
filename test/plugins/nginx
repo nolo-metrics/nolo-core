@@ -1,0 +1,31 @@
+#!/bin/sh
+. `dirname $0`/helper.sh
+
+# why yes, this is the worst webserver you'll ever see
+cat <<EOF | nc -l 1500 > /dev/null &
+HTTP/1.1 200 OK
+
+Active connections: 123
+server accepts handled requests
+  7368 7368 10993 
+Reading: 0 Writing: 5 Waiting: 38
+EOF
+
+export NGINX_STATUS_URL=localhost:1500
+
+command='plugins/nginx'
+
+expected=$(cat <<EOF
+active_connections 123
+accepted_requests 7368
+handled_connections 7368
+handled_requests 10993
+reading 0
+writing 5
+waiting 38
+virtual_memory_size 0
+resident_set_size 0
+EOF)
+
+assert_eq "`$command`" "$expected"
+
