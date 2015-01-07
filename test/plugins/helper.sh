@@ -29,7 +29,7 @@ assert_eq() {
 				--start-delete $'\033[30;41m' \
 				--end-delete $'\033[0m' \
 				--start-insert $'\033[30;42m' \
-				--end-insert $'\033[0m' \
+				--end-insert $'\033[0m'
 			rm -f $ACTUAL $EXPECTED
 		elif which diff > /dev/null
 		then
