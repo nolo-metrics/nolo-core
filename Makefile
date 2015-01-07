@@ -18,6 +18,7 @@ TESTS=\
 	test/gmetric/single \
 	test/plugins/cpu-freebsd \
 	test/plugins/cpu-linux \
+	test/plugins/cpu-sunos \
 	test/plugins/passenger \
 	test/plugins/proc-darwin \
 	test/plugins/proc-freebsd \
@@ -54,6 +55,7 @@ test: ${ALL}
 	test/gmetric/single
 	test/plugins/cpu-freebsd
 	test/plugins/cpu-linux
+	test/plugins/cpu-sunos
 	test/plugins/passenger
 	test/plugins/proc-darwin
 	test/plugins/proc-freebsd

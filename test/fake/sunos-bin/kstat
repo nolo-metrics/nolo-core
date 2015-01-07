@@ -1,0 +1,7 @@
+#!/bin/sh
+# kstat - stub `kstat` output from sunos
+
+echo "cpu:0:sys:cpu_ticks_idle        711885"
+echo "cpu:0:sys:cpu_ticks_kernel      13225"
+echo "cpu:0:sys:cpu_ticks_user        1056"
+echo "cpu:0:sys:cpu_ticks_wait        0"

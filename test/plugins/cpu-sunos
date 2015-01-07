@@ -1,0 +1,16 @@
+#!/bin/sh
+. `dirname $0`/helper.sh
+
+source_stubs "sunos"
+
+command='plugins/cpu-sunos'
+
+expected=$(cat <<EOF
+user 1056
+sys 13225
+idle 711885
+wait 0
+EOF)
+
+assert_eq "`$command`" "$expected"
+
