@@ -6,7 +6,8 @@
 redis-cli info all |
 # Format
 sed 's/:/ /g' |
-sed 's/\r//g' |
+# Strip carriage-returns, but not all seds accept \r
+sed 's///g' |
 # Blacklist non-metric records
 grep -v "^#" |
 grep -v "^$" |

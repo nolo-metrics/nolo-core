@@ -21,6 +21,7 @@ TESTS=\
   test/plugins/proc-freebsd \
   test/plugins/proc-linux \
   test/plugins/proc-sunos \
+  test/plugins/redis \
 
 FAKE_PLUGINS=\
   test/fake/plugins/failing-return \
@@ -44,6 +45,7 @@ FAKE_BINS=\
 
 ALL=${BINS} ${TESTS} ${PLUGINS} ${FAKE_PLUGINS} ${FAKE_BINS}
 
+IFS=" "
 test: ${ALL}
 	test/gmetric/check-exec
 	test/gmetric/empty-params
@@ -54,6 +56,7 @@ test: ${ALL}
 	test/plugins/proc-freebsd
 	test/plugins/proc-linux
 	test/plugins/proc-sunos
+	test/plugins/redis
 .PHONY: test
 
 tags: ${ALL}
