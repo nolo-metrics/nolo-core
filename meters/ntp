@@ -1,0 +1,21 @@
+#!/bin/sh
+# ntp - status of clock vs ntp peer
+# For more info see http://doc.ntp.org/4.2.6p5/ntpq.html#peer
+
+# grab associd from last line, second field
+associd=`ntpq -c associations | awk '{id = $2} END {print id}'`
+
+echo stratum `ntpq -c "rv $associd stratum" | cut -f2 -d=` 
+echo offset `ntpq -c "rv $associd offset" | cut -f2 -d=` unit=ms
+echo delay `ntpq -c "rv $associd delay" | cut -f2 -d=` unit=ms
+echo dispersion `ntpq -c "rv $associd dispersion" | cut -f2 -d=` unit=ms
+echo jitter `ntpq -c "rv $associd jitter" | cut -f2 -d=` unit=ms
+
+# latest stable `ntpq` doesn't have "kerninfo"
+ntpdc -c kerninfo |
+awk '
+/^estimated error:/ { print "kern_pll_err " $3 " unit=s" }
+/^pll frequency:/ { print "kern_pll_frequency " $3 }
+/^pll offs:/ { print "kern_pll_offset " $3 " unit=s" }
+'
+# TODO: consider using ntptime instead of kerninfo, also patching ntptime to use a less arbitrary output format.

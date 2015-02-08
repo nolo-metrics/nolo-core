@@ -3,7 +3,7 @@
 
 source_stubs
 
-command='plugins/passenger'
+command='meters/passenger'
 
 expected=$(cat <<EOF
 max_pool_size 7 units=processes slope=both description="Max processes in Passenger pool"

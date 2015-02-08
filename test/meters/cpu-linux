@@ -5,7 +5,7 @@ export PROC_STAT=`mktmp "proc_stat"`
 
 echo "cpu  2255 34 2290 22625563 6290 127 456 0 0" > $PROC_STAT
 
-command='plugins/cpu-linux'
+command='meters/cpu-linux'
 
 expected=$(cat <<EOF
 user 2255

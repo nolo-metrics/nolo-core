@@ -2,38 +2,38 @@ BINS=\
 	bin/nolo-gmetric \
 
 PLUGINS=\
-	plugins/cpu-darwin \
-	plugins/cpu-freebsd \
-	plugins/cpu-linux \
-	plugins/cpu-sunos \
-	plugins/nginx \
-	plugins/passenger \
-	plugins/proc \
-	plugins/redis \
+	meters/cpu-darwin \
+	meters/cpu-freebsd \
+	meters/cpu-linux \
+	meters/cpu-sunos \
+	meters/nginx \
+	meters/passenger \
+	meters/proc \
+	meters/redis \
 
 TESTS=\
 	test/gmetric/check-exec \
 	test/gmetric/empty-params \
 	test/gmetric/multiple \
 	test/gmetric/single \
-	test/plugins/cpu-freebsd \
-	test/plugins/cpu-linux \
-	test/plugins/cpu-sunos \
-	test/plugins/nginx \
-	test/plugins/passenger \
-	test/plugins/proc-darwin \
-	test/plugins/proc-freebsd \
-	test/plugins/proc-linux \
-	test/plugins/proc-sunos \
-	test/plugins/redis \
+	test/meters/cpu-freebsd \
+	test/meters/cpu-linux \
+	test/meters/cpu-sunos \
+	test/meters/nginx \
+	test/meters/passenger \
+	test/meters/proc-darwin \
+	test/meters/proc-freebsd \
+	test/meters/proc-linux \
+	test/meters/proc-sunos \
+	test/meters/redis \
 
 FAKE_PLUGINS=\
-	test/fake/plugins/failing-return \
-	test/fake/plugins/inline-metadata \
-	test/fake/plugins/multiple \
-	test/fake/plugins/not-executable \
-	test/fake/plugins/shared-metadata \
-	test/fake/plugins/single \
+	test/fake/meters/failing-return \
+	test/fake/meters/inline-metadata \
+	test/fake/meters/multiple \
+	test/fake/meters/not-executable \
+	test/fake/meters/shared-metadata \
+	test/fake/meters/single \
 
 FAKE_BINS=\
 	test/fake/bin/passenger-memory-stats \
@@ -54,16 +54,16 @@ test: ${ALL}
 	test/gmetric/empty-params
 	test/gmetric/multiple
 	test/gmetric/single
-	test/plugins/cpu-freebsd
-	test/plugins/cpu-linux
-	test/plugins/cpu-sunos
-	test/plugins/nginx
-	test/plugins/passenger
-	test/plugins/proc-darwin
-	test/plugins/proc-freebsd
-	test/plugins/proc-linux
-	test/plugins/proc-sunos
-	test/plugins/redis
+	test/meters/cpu-freebsd
+	test/meters/cpu-linux
+	test/meters/cpu-sunos
+	test/meters/nginx
+	test/meters/passenger
+	test/meters/proc-darwin
+	test/meters/proc-freebsd
+	test/meters/proc-linux
+	test/meters/proc-sunos
+	test/meters/redis
 .PHONY: test
 
 tags: ${ALL}

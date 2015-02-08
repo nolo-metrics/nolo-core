@@ -13,7 +13,7 @@ EOF
 
 export NGINX_STATUS_URL=localhost:1500
 
-command='plugins/nginx'
+command='meters/nginx'
 
 expected=$(cat <<EOF
 active_connections 123

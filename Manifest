@@ -1,0 +1,26 @@
+# contents of nolo-full package
+# scheduler
+/etc/cron.d/nolo
+# default paths
+/etc/default/nolo
+# available/enabled meters/sinks
+/etc/nolo/meters-available/...
+/etc/nolo/meters-enabled/
+/etc/nolo/sinks-available/...
+/etc/nolo/sinks-enabled/
+# user-visible executables
+/opt/nolo/sbin/nolo
+# support executables
+/opt/nolo/libexec/nolo/
+/opt/nolo/libexec/nolo/nolo-json
+# meter plugins
+/opt/nolo/libexec/nolo/meters/cpu
+/opt/nolo/libexec/nolo/meters/nginx
+/opt/nolo/libexec/nolo/meters/passenger
+/opt/nolo/libexec/nolo/meters/proc
+/opt/nolo/libexec/nolo/meters/redis
+# sink plugins
+/opt/nolo/libexec/nolo/sinks/ganglia
+/opt/nolo/libexec/nolo/sinks/graphite
+/opt/nolo/libexec/nolo/sinks/influx
+/opt/nolo/libexec/nolo/sinks/librato

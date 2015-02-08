@@ -1,0 +1,10 @@
+#!/bin/sh
+
+#column family stats
+nodetool cfstats
+
+#network stats
+nodetool netstats
+
+#thread pool stats
+nodetool tpstats

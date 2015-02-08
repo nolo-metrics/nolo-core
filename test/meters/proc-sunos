@@ -3,7 +3,7 @@
 
 source_stubs "sunos"
 
-command='plugins/proc'
+command='meters/proc'
 
 expected=$(cat <<EOF
 load 1.23

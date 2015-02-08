@@ -3,7 +3,7 @@
 
 source_stubs "linux"
 
-command='plugins/proc'
+command='meters/proc'
 
 expected=$(cat <<EOF
 load 3.21

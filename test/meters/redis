@@ -4,7 +4,7 @@
 
 source_stubs
 
-command='plugins/redis'
+command='meters/redis'
 
 expected=$(cat <<EOF
 redis_git_dirty 0

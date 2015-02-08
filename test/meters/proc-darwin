@@ -1,22 +1,22 @@
 #!/bin/sh
 . `dirname $0`/helper.sh
 
-source_stubs "freebsd"
+source_stubs "darwin"
 
-command='plugins/proc'
+command='meters/proc'
 
 expected=$(cat <<EOF
-load 0.01
-total 8
+load 0.99
+total 6
 dead 0
 idle 1
-lock 1
+lock 0
 runnable 1
 running 0
 sleeping 1
 stopped 1
 uninterruptible 1
-waiting 1
+waiting 0
 zombie 1
 EOF)
 

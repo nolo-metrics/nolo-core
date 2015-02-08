@@ -3,7 +3,7 @@
 
 source_stubs "sunos"
 
-command='plugins/cpu-sunos'
+command='meters/cpu-sunos'
 
 expected=$(cat <<EOF
 user 1056

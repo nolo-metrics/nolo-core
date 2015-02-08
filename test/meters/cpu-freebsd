@@ -3,7 +3,7 @@
 
 source_stubs "freebsd"
 
-command='plugins/cpu-freebsd'
+command='meters/cpu-freebsd'
 
 expected=$(cat <<EOF
 user 737
