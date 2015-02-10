@@ -1,7 +1,9 @@
+VERSION=0.1.0
+
 BINS=\
 	bin/nolo-gmetric \
 
-PLUGINS=\
+METERS=\
 	meters/cpu-darwin \
 	meters/cpu-freebsd \
 	meters/cpu-linux \
@@ -27,7 +29,7 @@ TESTS=\
 	test/meters/proc-sunos \
 	test/meters/redis \
 
-FAKE_PLUGINS=\
+FAKE_METERS=\
 	test/fake/meters/failing-return \
 	test/fake/meters/inline-metadata \
 	test/fake/meters/multiple \
@@ -47,7 +49,7 @@ FAKE_BINS=\
 	test/fake/sunos-bin/ps \
 	test/fake/sunos-bin/uptime \
 
-ALL=${BINS} ${TESTS} ${PLUGINS} ${FAKE_PLUGINS} ${FAKE_BINS}
+ALL=${BINS} ${TESTS} ${METERS} ${FAKE_METERS} ${FAKE_BINS}
 
 test: ${ALL}
 	test/gmetric/check-exec
@@ -69,5 +71,39 @@ test: ${ALL}
 tags: ${ALL}
 	ctags -R .
 
+pkg: pkg-deb
+.PHONY: pkg
+
+BUILDDIR=${PWD}/build
+GOPATH=${BUILDDIR}
+PREFIX=opt/nolo
+build: ${METERS}
+	rm -rf "${BUILDDIR}"
+	mkdir -p "${BUILDDIR}"
+	mkdir -p "${BUILDDIR}/${PREFIX}/sbin"
+	mkdir -p "${BUILDDIR}/${PREFIX}/libexec/nolo/meters"
+	mkdir -p "${BUILDDIR}/${PREFIX}/libexec/nolo/sinks"
+	# nolo-json
+	go get -u github.com/nolo-metrics/nolo-json
+	mv "${BUILDDIR}/bin/nolo-json" "${BUILDDIR}/${PREFIX}/libexec/nolo/"
+	# ganglia sink
+	go get -u github.com/nolo-metrics/nolo-ganglia
+	mv "${BUILDDIR}/bin/nolo-ganglia" "${BUILDDIR}/${PREFIX}/libexec/nolo/sinks/ganglia"
+	# graphite sink
+	# pip install git+https://github.com/nolo-metrics/nolo-graphite.git --target "${BUILDDIR}"
+	# cleanup gopath stuff
+	rm -rf "${BUILDDIR}/bin"
+	rm -rf "${BUILDDIR}/src"
+	rm -rf "${BUILDDIR}/pkg"
+	# meters
+	cp ${METERS} "${BUILDDIR}/${PREFIX}/libexec/nolo/meters/"
+.PHONY: build
+
+pkg-deb: build
+	fpm -s dir -t deb -n nolo -v ${VERSION} build
+.PHONY: pkg-deb
+
 clean:
-	rm tags
+	rm -rf build
+	rm -f *.deb
+	rm -f tags

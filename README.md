@@ -23,8 +23,7 @@ Extract the repo into the directory of your choice:
     PREFIX=/opt/nolo
     git clone https://github.com/nolo-metrics/nolo-core $PREFIX
 
-Soon, nolo should be available in standard system packages. Feel free
-to help out!
+Soon, nolo should be available in standard system packages. Feel free to help out!
 
 ## What you get
 
@@ -34,9 +33,7 @@ For files to be provided by an install package, see the `Manifest` file.
 
 ## Sink Adapters
 
-To connect your meters to the metrics aggregation system of your
-choice, you'll need to set up a sink. Here's what's working and
-supported today:
+To connect your meters to the metrics aggregation system of your choice, you'll need to set up a sink. Here's what's working and supported today:
 
 -   [nolo-graphite][] - written using the python API
 -   [nolo-librato][] - written using the ruby API
@@ -44,15 +41,15 @@ supported today:
 
 Of course, we'd love to support every system out there! Here's a list of ones that don't have adapters (but probably should):
 
--   [InfluxDB](http://influxdb.com/)
--   [OpenTSDB](http://opentsdb.net/)
--   [Server Density](https://www.serverdensity.com/)
--   [Cacti](http://cacti.net/)
--   [Munin](http://munin-monitoring.org/)
--   [collectd](http://collectd.org/)
--   [Scout](https://scoutapp.com/)
--   [StatsD](https://github.com/etsy/statsd)
--   [Reimann](http://riemann.io/)
+-   [InfluxDB][]
+-   [OpenTSDB][]
+-   [Server Density][]
+-   [Cacti][]
+-   [Munin][]
+-   [collectd][]
+-   [Scout][]
+-   [StatsD][]
+-   [Reimann][]
 
 ## About the name
 
@@ -70,6 +67,15 @@ Nolo is Copyright (c) 2012 [Joseph Anthony Pasquale Holsten][] and distributed u
   [nolo-graphite]: https://github.com/nolo-metrics/nolo-graphite
   [nolo-librato]: https://github.com/nolo-metrics/nolo-librato
   [nolo-ganglia]: https://github.com/nolo-metrics/nolo-ganglia
+  [InfluxDB]: http://influxdb.com/
+  [OpenTSDB]: http://opentsdb.net/
+  [Server Density]: https://www.serverdensity.com/
+  [Cacti]: http://cacti.net/
+  [Munin]: http://munin-monitoring.org/
+  [collectd]: http://collectd.org/
+  [Scout]: https://scoutapp.com/
+  [StatsD]: https://github.com/etsy/statsd
+  [Reimann]: http://riemann.io/
   [Graphite]: http://graphite.wikidot.com
   [Nagios]: http://www.nagios.org
   [Joseph Anthony Pasquale Holsten]: http://josephholsten.com
