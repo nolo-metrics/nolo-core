@@ -15,7 +15,13 @@ awk '
   print "softirq " $8
   print "steal "   $9
 }
+/cpu[^ ]/ {
+  num += 1
+}
 /btime/ {
   print "boottime " $2
+}
+END {
+  print "num " num
 }
 '
