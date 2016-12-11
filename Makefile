@@ -97,13 +97,24 @@ build: ${METERS}
 	rm -rf "${BUILDDIR}/pkg"
 	# meters
 	cp ${METERS} "${BUILDDIR}/${PREFIX}/libexec/nolo/meters/"
-.PHONY: build
 
-pkg-deb: build
-	fpm -s dir -t deb -n nolo -v ${VERSION} build
+pkg-deb: build nolo_${VERSION}_amd64.deb
 .PHONY: pkg-deb
+
+nolo_${VERSION}_amd64.deb:
+	fpm -s dir -t deb -n nolo -v ${VERSION} build
 
 clean:
 	rm -rf build
 	rm -f *.deb
 	rm -f tags
+
+bootstrap:
+	@(which fpm > /dev/null && echo "fpm found.") || echo "fpm not found! You'll need to install this on your own."
+	@((which gnutar > /dev/null || which gtar > /dev/null) && echo "gnu tar found.") || echo "gnu tar not found! You'll need to install this on your own."
+	@(which package_cloud > /dev/null && echo "package_cloud found.") || echo "package_cloud not found! You'll need to install this on your own."
+.PHONY: bootstrap
+
+publish: pkg
+	package_cloud push josephholsten/nolo/ubuntu/trusty nolo_${VERSION}_amd64.deb
+	package_cloud push josephholsten/nolo/ubuntu/xenial nolo_${VERSION}_amd64.deb
